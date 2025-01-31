@@ -1,23 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
- <link rel="icon" href="icon/battery.png" type="image/png">
-<title>Home</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rust Skins Marketplace</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-<p><a href="Roll-bar/roll-bar">Roll-bar</a> </p>
-<p><a href="Karta/Karta.html">Karta</a> </p>
-<p><a href="Baterka/Baterka.html">Baterka</a> </p>
-<p><a href="Bar/bar.html">Bar</a> </p>
-<p><a href="Secret-text/Tajny-text.html">Tajny-text</a> </p>
-<p><a href="Buy-bar/Buy-bar.html">Bar2</a> </p>
-<p><a href="Login/Login.html">Login</a> </p>
-<p><a href="Buy-button/Buy-button.html">Buy-button</a></p>
-<p><a href="Heart/Heart.html"></a></p>
-<p><a href="Karta-original/Karta1.html">Karta-original</a> </p>
-<p><a href="Delete-button/Delete-button.html">Delete-buttons</a></p>
-<p><a href="Natyla/Natyla.html">.</a></p>
- <p><a href="Ph.html">.</a></p>
-<p><a href="czc/czc">czc</a></p>
+<body class="bg-gray-100">
+    <header class="bg-white shadow-md py-4 px-8">
+        <div class="flex justify-between items-center">
+            <h1 class="text-3xl font-bold">Rust Skins Marketplace</h1>
+            <div class="flex gap-4">
+                <input type="text" placeholder="Search skins..." class="w-64 px-4 py-2 border rounded-lg">
+                <button class="bg-blue-500 text-white px-4 py-2 rounded-lg">Search</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto py-8">
+        <h2 class="text-3xl font-semibold mb-6">Available Skins</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <img src="thompson-glory.jpg" alt="Thompson - Glory Skin" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold mb-2">Thompson - Glory Skin</h3>
+                    <p class="text-lg text-gray-700">$29.99</p>
+                    <button class="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg">Add to Cart</button>
+                </div>
+            </div>
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <img src="ak47-redline.jpg" alt="AK-47 - Red Line" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold mb-2">AK-47 - Red Line</h3>
+                    <p class="text-lg text-gray-700">$45.99</p>
+                    <button class="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg">Add to Cart</button>
+                </div>
+            </div>
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <img src="hazmat-blackout.jpg" alt="Hazmat Suit - Blackout" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold mb-2">Hazmat Suit - Blackout</h3>
+                    <p class="text-lg text-gray-700">$89.99</p>
+                    <button class="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-4 mt-8">
+        <div class="text-center">
+            <p>&copy; 2025 Rust Skin Market. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
