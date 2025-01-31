@@ -3,72 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rust Skins Marketplace</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script>
-        // Sample skin data
-        let skins = [
-            { id: 1, name: "Thompson - Glory Skin", price: 29.99, image: "thompson-glory.jpg" },
-            { id: 2, name: "AK-47 - Red Line", price: 45.99, image: "ak47-redline.jpg" },
-            { id: 3, name: "Hazmat Suit - Blackout", price: 89.99, image: "hazmat-blackout.jpg" },
-            { id: 4, name: "MP5 - Neon Revolution", price: 49.99, image: "mp5-neon.jpg" },
-            { id: 5, name: "LR300 - Camouflage", price: 75.99, image: "lr300-camo.jpg" },
-            { id: 6, name: "Revolver - Gold Edition", price: 99.99, image: "revolver-gold.jpg" }
-        ];
-
-        function renderSkins() {
-            const container = document.getElementById('skins-container');
-            container.innerHTML = '';
-
-            skins.forEach((skin, index) => {
-                container.innerHTML += `
-                    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-                        <img src="${skin.image}" alt="${skin.name}" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-xl font-bold mb-2">${skin.name}</h3>
-                            <p class="text-lg text-gray-700">$${skin.price.toFixed(2)}</p>
-                            <button class="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg" onclick="editSkin(${index})">Edit</button>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
-        function editSkin(index) {
-            const skin = skins[index];
-            const newName = prompt("Enter new skin name:", skin.name);
-            const newPrice = parseFloat(prompt("Enter new price:", skin.price));
-
-            if (newName && !isNaN(newPrice)) {
-                skins[index].name = newName;
-                skins[index].price = newPrice;
-                renderSkins();
-            }
-        }
-
-        window.onload = renderSkins;
-    </script>
+    <title>Rust Trade Market</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
-<body class="bg-gray-100">
-    <header class="bg-white shadow-md py-4 px-8">
-        <div class="flex justify-between items-center">
-            <h1 class="text-3xl font-bold">Rust Skins Marketplace</h1>
-            <div class="flex gap-4">
-                <input type="text" placeholder="Search skins..." class="w-64 px-4 py-2 border rounded-lg">
-                <button class="bg-blue-500 text-white px-4 py-2 rounded-lg">Search</button>
-            </div>
-        </div>
+<body>
+    <header>
+        <h1>Rust Trade Market</h1>
+        <button id="steam-login">Login via Steam</button>
     </header>
 
-    <main class="max-w-7xl mx-auto py-8">
-        <h2 class="text-3xl font-semibold mb-6">Available Skins</h2>
-        <div id="skins-container" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-    </main>
+    <main>
+        <section id="filters">
+            <input type="text" id="search" placeholder="Search for items..." oninput="filterItems()">
+            <select id="sort" onchange="filterItems()">
+                <option value="low-high">Price: Low to High</option>
+                <option value="high-low">Price: High to Low</option>
+            </select>
+        </section>
 
-    <footer class="bg-gray-800 text-white py-4 mt-8">
-        <div class="text-center">
-            <p>&copy; 2025 Rust Skin Market. All rights reserved.</p>
-        </div>
-    </footer>
+        <section id="marketplace">
+            <h2>Marketplace</h2>
+            <div id="items-list"></div>
+        </section>
+    </main>
 </body>
 </html>
