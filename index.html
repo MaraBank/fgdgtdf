@@ -5,6 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rust Skins Marketplace</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script>
+        // Sample skin data
+        let skins = [
+            { id: 1, name: "Thompson - Glory Skin", price: 29.99, image: "thompson-glory.jpg" },
+            { id: 2, name: "AK-47 - Red Line", price: 45.99, image: "ak47-redline.jpg" },
+            { id: 3, name: "Hazmat Suit - Blackout", price: 89.99, image: "hazmat-blackout.jpg" },
+            { id: 4, name: "MP5 - Neon Revolution", price: 49.99, image: "mp5-neon.jpg" },
+            { id: 5, name: "LR300 - Camouflage", price: 75.99, image: "lr300-camo.jpg" },
+            { id: 6, name: "Revolver - Gold Edition", price: 99.99, image: "revolver-gold.jpg" }
+        ];
+
+        function renderSkins() {
+            const container = document.getElementById('skins-container');
+            container.innerHTML = '';
+
+            skins.forEach((skin, index) => {
+                container.innerHTML += `
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                        <img src="${skin.image}" alt="${skin.name}" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold mb-2">${skin.name}</h3>
+                            <p class="text-lg text-gray-700">$${skin.price.toFixed(2)}</p>
+                            <button class="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg" onclick="editSkin(${index})">Edit</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function editSkin(index) {
+            const skin = skins[index];
+            const newName = prompt("Enter new skin name:", skin.name);
+            const newPrice = parseFloat(prompt("Enter new price:", skin.price));
+
+            if (newName && !isNaN(newPrice)) {
+                skins[index].name = newName;
+                skins[index].price = newPrice;
+                renderSkins();
+            }
+        }
+
+        window.onload = renderSkins;
+    </script>
 </head>
 <body class="bg-gray-100">
     <header class="bg-white shadow-md py-4 px-8">
@@ -19,32 +62,7 @@
 
     <main class="max-w-7xl mx-auto py-8">
         <h2 class="text-3xl font-semibold mb-6">Available Skins</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-                <img src="thompson-glory.jpg" alt="Thompson - Glory Skin" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <h3 class="text-xl font-bold mb-2">Thompson - Glory Skin</h3>
-                    <p class="text-lg text-gray-700">$29.99</p>
-                    <button class="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg">Add to Cart</button>
-                </div>
-            </div>
-            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-                <img src="ak47-redline.jpg" alt="AK-47 - Red Line" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <h3 class="text-xl font-bold mb-2">AK-47 - Red Line</h3>
-                    <p class="text-lg text-gray-700">$45.99</p>
-                    <button class="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg">Add to Cart</button>
-                </div>
-            </div>
-            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-                <img src="hazmat-blackout.jpg" alt="Hazmat Suit - Blackout" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <h3 class="text-xl font-bold mb-2">Hazmat Suit - Blackout</h3>
-                    <p class="text-lg text-gray-700">$89.99</p>
-                    <button class="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg">Add to Cart</button>
-                </div>
-            </div>
-        </div>
+        <div id="skins-container" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
     </main>
 
     <footer class="bg-gray-800 text-white py-4 mt-8">
